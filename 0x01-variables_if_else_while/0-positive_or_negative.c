@@ -4,7 +4,7 @@
 
 /**
  * main - Program entry point
- * Description: Prints a random num and whether it's positive, negative or zero
+ * Description: Prints a random num and whether it's postive, negative or zero
  * Return: 0
  */
 int main(void)
