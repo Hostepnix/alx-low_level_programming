@@ -1,50 +1,24 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 /**
- * simple_print_buffer - prints buffer in hexa
- * @buffer: the address of memory to print
- * @size: the size of the memory to print
+ * _calloc - allocates memory for an array, using malloc.
+ * @nmemb: number of elements in the array
+ * @size: size in bytes of the elements
  *
- * Return: Nothing.
+ * Return: void pointer to allocated memory
  */
-void simple_print_buffer(char *buffer, unsigned int size)
+void *_calloc(unsigned int nmemb, unsigned int size)
 {
-    unsigned int i;
+	char *p;
+	unsigned int i;
 
-    i = 0;
-    while (i < size)
-    {
-        if (i % 10)
-        {
-            printf(" ");
-        }
-        if (!(i % 10) && i)
-        {
-            printf("\n");
-        }
-        printf("0x%02x", buffer[i]);
-        i++;
-    }
-    printf("\n");
-}
-
-/**
- * main - check the code
- *
- * Return: Always 0.
- */
-int main(void)
-{
-    char *a;
-
-    a = _calloc(98, sizeof(char));
-    strcpy(a, "Best");
-    strcpy(a + 4, " School! :)\n");
-    a[97] = '!';
-    simple_print_buffer(a, 98);
-    free(a);
-    return (0);
+	if (nmemb == 0 || size == 0)
+		return (NULL);
+	p = malloc(nmemb * size);
+	if (p == NULL)
+		return (NULL);
+	for (i = 0; i < (nmemb * size); i++)
+		p[i] = 0;
+	return (p);
 }
